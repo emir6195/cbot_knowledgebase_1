@@ -1,6 +1,9 @@
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering, pipeline
 from flask import Flask, jsonify, request, abort
 from get_relevant_chunk import get_relevant_chunk
+from globals import GLOBALS
+
+print(GLOBALS)
 
 app = Flask(__name__)
 
@@ -33,4 +36,4 @@ def questionWithContext() :
         return abort(400)
     
 if __name__ == '__main__' : 
-    app.run(host='0.0.0.0', port='5002')
+    app.run(host=GLOBALS["HOST"], port=GLOBALS["PORT"])
